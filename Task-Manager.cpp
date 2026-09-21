@@ -21,6 +21,7 @@ class TaskManager{
         Task task;
 
         task.id = nextnum;
+        nextnum++;
       }
 }
 
