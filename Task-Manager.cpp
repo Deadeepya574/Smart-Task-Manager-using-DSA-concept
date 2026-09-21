@@ -176,7 +176,15 @@ public:
             cout << "Low";
     }
 
-    void searchTask(){}
+    void searchTask(){
+        int id;
+        cout << "Enter id to search";
+        cin >> id;
+
+        for(const Task& task : tasks){
+            if(task.id = i)
+        }
+    }
 };
 
 struct ComparePriority
