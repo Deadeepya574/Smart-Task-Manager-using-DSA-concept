@@ -74,10 +74,7 @@ class TaskManager{
 
     for (Task& task : tasks) {
 
-        if (task.id == id) {
-
-            cout << "\Task found!\n";
-
+        if (task.id == id) { 
             cout << "Enter new title: ";
             getline(cin >> ws, task.title);
 
