@@ -136,6 +136,9 @@ public:
     }
 
 };
+struct ComparePriority{
+
+}
 
 int main()
 {
