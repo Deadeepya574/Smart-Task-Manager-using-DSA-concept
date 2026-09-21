@@ -74,7 +74,7 @@ public:
         return;
     }
 
-    void updateTask()
+    void updateTasks()
     {
 
         int id;
@@ -106,6 +106,8 @@ public:
             }
         }
     }
+
+
 };
 
 int main()
@@ -116,6 +118,7 @@ int main()
     manager.addTask();
     manager.displayTasks();
     manager.updateTasks();
+    manager.displayTasks();
 
     return 0;
 }
