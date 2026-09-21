@@ -116,11 +116,11 @@ public:
                 tasks.erase(tasks.begin()+i);
                 return ;
             }
-            
-        }
-    }
 
- 
+        }
+        
+    cout << "Task Not Found"; 
+    }
 };
 
 int main()
@@ -131,6 +131,7 @@ int main()
     manager.addTask();
     manager.displayTasks();
     manager.updateTasks();
+    manager.deletetask();
     manager.displayTasks();
 
     return 0;
