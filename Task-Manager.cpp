@@ -246,7 +246,9 @@ public:
     }
 
     void sortbypriority(){
-        sort(tasks.begin(),tasks.end(),[](const Task& a ))
+        sort(tasks.begin(),tasks.end(),[](const Task& a , const Task& b){
+            return a.priority > b.priority
+        })
     }
 
 
