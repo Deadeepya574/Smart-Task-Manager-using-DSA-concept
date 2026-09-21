@@ -60,10 +60,13 @@ class TaskManager{
         for(Task &task : tasks){
             cout << "ID" << task.id;
             cout << "Title" << task.title;
-            cout << "Description" << tasl.description;
-                }
+            cout << "Description" << task.description;
+        }
+        cout << "endl";
 
       }
+
+
 };
 
 
@@ -72,6 +75,7 @@ int main(){
      
 
     TaskManager manager;
+    manager.addTask();
     manager.addTask();
     return 0;
 }
