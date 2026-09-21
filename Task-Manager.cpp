@@ -121,7 +121,7 @@ public:
     }
 
     void completeTasks(){
-        for
+        for(Task& task : task)
     }
 
 
