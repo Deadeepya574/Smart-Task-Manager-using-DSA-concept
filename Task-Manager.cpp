@@ -51,6 +51,7 @@ public:
         task.completed = false;
 
         tasks.push_back(task);
+        priorityTasks.push(task);
 
         cout << "Task added successfully!! ";
         return;
