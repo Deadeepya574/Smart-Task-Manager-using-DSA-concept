@@ -18,7 +18,9 @@ class TaskManager{
      int nextnum =1 ;
     public:
       void addtask(){
-        
+        Task task;
+
+        task.id = nextnum;
       }
 }
 
