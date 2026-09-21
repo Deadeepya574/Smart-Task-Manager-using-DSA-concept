@@ -255,7 +255,7 @@ public:
     }
 
     void sortbydeadline(){
-        
+        sort(tasks.begin())
     }
 
 
