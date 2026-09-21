@@ -111,7 +111,7 @@ public:
     void deletetask(){
         int id;
         cout << "Enter id to delete";
-        
+        for(int i = 0;i<tasks)
     }
 
  
