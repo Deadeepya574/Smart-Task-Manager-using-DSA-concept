@@ -16,7 +16,7 @@ struct Task
 class TaskManager
 {
 private:
-    vector<Task> tasks; 
+    vector<Task> tasks;
     int nextnum = 1;
 
 public:
@@ -49,7 +49,7 @@ public:
 
         task.completed = false;
 
-        tasks.push_back(task); 
+        tasks.push_back(task);
 
         cout << "Task added successfully!! ";
         return;
@@ -108,26 +108,34 @@ public:
         }
     }
 
-    void deletetask(){
+    void deletetask()
+    {
         int id;
         cout << "Enter id to delete";
-        for(int i = 0;i<tasks.size();i++){
-            if(tasks[i].id = id){
-                tasks.erase(tasks.begin()+i);
-                return ;
-            } 
-        } 
-    cout << "Task Not Found"; 
+        for (int i = 0; i < tasks.size(); i++)
+        {
+            if (tasks[i].id = id)
+            {
+                tasks.erase(tasks.begin() + i);
+                return;
+            }
+        }
+        cout << "Task Not Found";
     }
 
-    void completeTasks(){
-        for(Task& task : tasks){
-            if(task.id == id){
+    void completeTasks()
+    {
+        for (Task &task : tasks)
+        {
+            if (task.id == id)
+            {
                 task.completed = !task.completed;
-                if(task.completed){
+                if (task.completed)
+                {
                     cout << "Task Completed";
                 }
-                else{
+                else
+                {
                     cout << "Task Pending";
                 }
                 return;
@@ -135,38 +143,38 @@ public:
         }
     }
 
-
-    void shownextpriorityTask(){
-        if(tasks.empty()){
+    void shownextpriorityTask()
+    {
+        if (tasks.empty())
+        {
             cout << "No tasks";
             return;
         }
-        Task task = priorityTasks.top();
+        priority_queue<Task, vector<Task>, ComparePriority> pq;
 
-    cout << "ID       : " << task.id << endl;
-    cout << "Title    : " << task.title << endl;
-    cout << "Priority : ";
+        cout << "ID       : " << task.id << endl;
+        cout << "Title    : " << task.title << endl;
+        cout << "Priority : ";
 
-    if (task.priority == 3)
-        cout << "High";
-    else if (task.priority == 2)
-        cout << "Medium";
-    else
-        cout << "Low";
-
+        if (task.priority == 3)
+            cout << "High";
+        else if (task.priority == 2)
+            cout << "Medium";
+        else
+            cout << "Low";
     }
 };
 
-
-struct ComparePriority{
-    bool operator()(const Task& a, const Task& b){
+struct ComparePriority
+{
+    bool operator()(const Task &a, const Task &b)
+    {
         return a.priority < b.priority;
-    } 
+    }
 }
 
-
-
-int main()
+int
+main()
 {
 
     TaskManager manager;
@@ -175,7 +183,7 @@ int main()
     manager.displayTasks();
     manager.updateTasks();
     manager.deletetask();
-    manager.displayTasks(); 
+    manager.displayTasks();
     manager.completeTasks();
     manager.shownextpriorityTask();
 
