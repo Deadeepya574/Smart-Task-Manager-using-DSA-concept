@@ -152,6 +152,12 @@ public:
         }
         priority_queue<Task, vector<Task>, ComparePriority> pq;
 
+        for(const Task& task : tasks){
+            if(!task.completed){
+                
+            }
+        }
+
         cout << "ID       : " << task.id << endl;
         cout << "Title    : " << task.title << endl;
         cout << "Priority : ";
