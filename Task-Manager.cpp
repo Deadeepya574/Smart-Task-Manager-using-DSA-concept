@@ -17,6 +17,7 @@ class TaskManager
 {
 private:
     vector<Task> tasks;
+    priority_queue<Task,vector<Task>,ComparePriority
     int nextnum = 1;
 
 public:
