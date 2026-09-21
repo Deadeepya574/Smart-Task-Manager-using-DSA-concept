@@ -219,7 +219,27 @@ public:
 
 
     void searchbyTitle(){
-        
+        string title;
+        cout << "Enter the title to search";
+        cin >> title;
+
+        bool found = false;
+        for (const Task& task : tasks) {
+
+        if (task.title == title) {
+
+            cout << "\nTask Found!";
+            cout << "\nID       : " << task.id;
+            cout << "\nTitle    : " << task.title;
+            cout << "\nPriority : " << task.priority;
+            cout << "\nDeadline : " << task.deadline;
+            cout << "\nStatus   : "
+                 << (task.completed ? "Completed" : "Pending")
+                 << endl;
+
+            found = true;
+        }
+    }
     }
 };
 
