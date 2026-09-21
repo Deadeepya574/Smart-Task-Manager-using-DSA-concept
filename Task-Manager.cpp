@@ -285,7 +285,7 @@ main()
     manager.completeTasks();
     manager.shownextpriorityTask();
 
-    manager.searchTask();
+    manager.searchTaskbyid();
 
     manager.searchByTitle();
 
