@@ -121,7 +121,17 @@ public:
     }
 
     void completeTasks(){
-        for(Task& task : task)
+        for(Task& task : tasks){
+            if(task.id == id){
+                task.completed = !task.completed;
+                if(task.completed){
+                    cout << "Task Completed";
+                }
+                else{
+                    cout << "Task Pending";
+                }
+            }
+        }
     }
 
 
