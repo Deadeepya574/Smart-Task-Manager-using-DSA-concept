@@ -183,9 +183,38 @@ public:
 
         for(const Task& task : tasks){
             if(task.id == id ){
-                
+
+            cout << "ID          : " << task.id << endl;
+            cout << "Title       : " << task.title << endl;
+            cout << "Description : " << task.description << endl;
+
+            cout << "Priority    : ";
+
+            if (task.priority == 3)
+                cout << "High";
+            else if (task.priority == 2)
+                cout << "Medium";
+            else
+                cout << "Low";
+
+            cout << endl;
+
+            cout << "Deadline    : " << task.deadline << endl;
+
+            cout << "Status      : "
+                 << (task.completed ? "Completed" : "Pending")
+                 << endl;
+
+            cout << "Category    : " << task.category << endl;
+
+            cout << "Recurring   : "
+                 << (task.recurring ? "Yes" : "No")
+                 << endl;
+
+                 return;
             }
         }
+        cout << "Task Not Found";
     }
 };
 
