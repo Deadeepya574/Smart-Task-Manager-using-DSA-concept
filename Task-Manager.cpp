@@ -247,8 +247,15 @@ public:
 
     void sortbypriority(){
         sort(tasks.begin(),tasks.end(),[](const Task& a , const Task& b){
-            return a.priority > b.priority
-        })
+            return a.priority > b.priority;
+        });
+
+        cout << "Tasks sorted by priority";
+        displayTasks();
+    }
+
+    void sortbydeadline(){
+        
     }
 
 
