@@ -58,7 +58,9 @@ class TaskManager{
         }
 
         for(Task &task : tasks){
-            
+            cout << "ID" << task.id;
+            cout << "Title" << task.title;
+            cout << "Deas"
         }
 
       }
