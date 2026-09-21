@@ -57,7 +57,9 @@ class TaskManager{
             return ;
         }
 
-        for()
+        for(Task &task : tasks){
+            
+        }
 
       }
 };
