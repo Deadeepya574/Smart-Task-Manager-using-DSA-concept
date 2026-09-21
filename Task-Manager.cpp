@@ -137,7 +137,7 @@ public:
 
 
     void shownextpriorityTask(){
-        if(priorityTasks.empty()){
+        if(tasks.empty()){
             cout << "No tasks";
             return;
         }
