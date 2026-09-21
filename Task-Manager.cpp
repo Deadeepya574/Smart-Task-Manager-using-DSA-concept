@@ -55,7 +55,7 @@ public:
         return;
     }
 
-    void displaytasks()
+    void displayTasks()
     {
         if (tasks.empty())
         {
@@ -114,7 +114,7 @@ int main()
     TaskManager manager;
     manager.addTask();
     manager.addTask();
-    manager.displaytasks();
+    manager.displayTasks();
     manager.updateTasks();
 
     return 0;
