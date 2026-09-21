@@ -143,7 +143,7 @@ public:
             cout << "No tasks";
             return;
         }
-        
+        Task task = priorityTasks.top();
 
     }
 };
