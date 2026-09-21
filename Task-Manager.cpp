@@ -12,7 +12,15 @@ struct Task{
     bool recurring;
 };
 
-class TaskManager
+class TaskManager{
+    private:
+     vector<Task> tasks;
+     int nextnum =1 ;
+    public:
+      void addtask(){
+        
+      }
+}
 
 int main(){
     Task task1;
