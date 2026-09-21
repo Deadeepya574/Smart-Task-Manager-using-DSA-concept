@@ -291,7 +291,7 @@ main()
 
     manager.sortbypriority();
 
-    manager.
+    manager.sortbydeadline();
 
     return 0;
 }
