@@ -287,7 +287,11 @@ main()
 
     manager.searchTaskbyid();
 
-    manager.searchByTitle();
+    manager.searchbyTitle();
+
+    manager.sortbypriority();
+
+    manager.
 
     return 0;
 }
