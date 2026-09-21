@@ -1,7 +1,8 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-struct Task{
+struct Task
+{
     int id;
     string title;
     string description;
@@ -12,21 +13,24 @@ struct Task{
     bool recurring;
 };
 
-class TaskManager{
-    private:
-     vector<Task> tasks;
-     int nextnum =1 ;
-    public:
-      void addTask(){
+class TaskManager
+{
+private:
+    vector<Task> tasks;
+    int nextnum = 1;
+
+public:
+    void addTask()
+    {
         Task task;
 
         task.id = nextnum++;
-        
+
         cout << "Enter Task Title";
         getline(cin >> ws, task.title);
 
         cout << "Enter description: ";
-        getline(cin , task.description);
+        getline(cin, task.description);
 
         cout << "Enter Priority (3,2,1)";
         cin >> task.priority;
@@ -49,64 +53,63 @@ class TaskManager{
 
         cout << "Task added successfully!! ";
         return;
-        
-      }
+    }
 
-      void displaytasks(){
-        if(tasks.empty()){
+    void displaytasks()
+    {
+        if (tasks.empty())
+        {
             cout << "No tasks available";
-            return ;
+            return;
         }
 
-        for(Task &task : tasks){
+        for (Task &task : tasks)
+        {
             cout << "ID" << task.id;
             cout << "Title" << task.title;
             cout << "Description" << task.description;
         }
         cout << "endl";
 
-        return ;
+        return;
+    }
 
-      }
+    void updateTask()
+    {
 
-      void updateTask() {
+        int id;
+        cout << "\nEnter Task ID to update: ";
+        cin >> id;
 
-    int id;
-    cout << "\nEnter Task ID to update: ";
-    cin >> id;
+        for (Task &task : tasks)
+        {
 
-    for (Task& task : tasks) {
+            if (task.id == id)
+            {
+                cout << "Enter new title: ";
+                getline(cin >> ws, task.title);
 
-        if (task.id == id) { 
-            cout << "Enter new title: ";
-            getline(cin >> ws, task.title);
+                cout << "Enter new description: ";
+                getline(cin, task.description);
 
-            cout << "Enter new description: ";
-            getline(cin, task.description);
+                cout << "Enter new priority (3, 2, 1): ";
+                cin >> task.priority;
 
-            cout << "Enter new priority (3, 2, 1): ";
-            cin >> task.priority;
+                cout << "Enter new deadline (YYYY-MM-DD): ";
+                cin >> task.deadline;
 
-            cout << "Enter new deadline (YYYY-MM-DD): ";
-            cin >> task.deadline;
+                cout << "Enter new category: ";
+                getline(cin >> ws, task.category);
 
-            cout << "Enter new category: ";
-            getline(cin >> ws, task.category);
-
-            cout << "\nTask updated successfully!\n";
-            return;
+                cout << "\nTask updated successfully!\n";
+                return;
+            }
         }
-    } 
-    
-}
-
-
+    }
 };
 
-
-
-int main(){
-     
+int main()
+{
 
     TaskManager manager;
     manager.addTask();
