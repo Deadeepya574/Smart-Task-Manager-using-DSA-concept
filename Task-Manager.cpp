@@ -22,7 +22,8 @@ class TaskManager{
 
         task.id = nextnum++;
         
-        cout << ""
+        cout << "Enter Task Title";
+        getline(cin >> ws, )
 
 
       }
