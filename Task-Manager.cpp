@@ -25,8 +25,13 @@ class TaskManager{
         cout << "Enter Task Title";
         getline(cin >> ws, task.title);
 
-        cout >> "Enter description: ";
+        cout << "Enter description: ";
         getline(cin , task.description);
+
+        cout << "Enter Priority (3,2,1)";
+        cin >> task.priority;
+
+        
 
 
       }
