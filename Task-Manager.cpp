@@ -20,10 +20,11 @@ class TaskManager{
       void addtask(){
         Task task;
 
-        task.id = nextnum;
-        nextnum++;
-
+        task.id = nextnum++;
         
+        cout << ""
+
+
       }
 }
 
