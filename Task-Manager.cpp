@@ -154,9 +154,10 @@ public:
 
         for(const Task& task : tasks){
             if(!task.completed){
-                
+                pq.push(task);
             }
         }
+        
 
         cout << "ID       : " << task.id << endl;
         cout << "Title    : " << task.title << endl;
