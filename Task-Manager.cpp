@@ -183,9 +183,7 @@ struct ComparePriority
     {
         return a.priority < b.priority;
     }
-}
-
-int
+} 
 main()
 {
 
