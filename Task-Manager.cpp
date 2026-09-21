@@ -178,7 +178,7 @@ int main()
     manager.updateTasks();
     manager.deletetask();
     manager.displayTasks(); 
-    manager.completeTask();
+    manager.completeTasks();
     manager.shownextpriorityTask();
 
     return 0;
