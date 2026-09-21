@@ -31,7 +31,12 @@ class TaskManager{
         cout << "Enter Priority (3,2,1)";
         cin >> task.priority;
 
-        cout << "Enter Deadeline (YYY)"
+        cout << "Enter Deadline (YYY-MM-DD): ";
+        cin >> task.deadline;
+
+        cout << "Enter Category: ";
+        getline(cin >> ws, )
+
 
 
       }
