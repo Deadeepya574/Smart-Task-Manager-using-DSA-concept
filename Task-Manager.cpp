@@ -136,8 +136,11 @@ public:
     }
 
 };
-struct ComparePriority{
 
+
+struct ComparePriority{
+    bool operator()()
+ 
 }
 
 int main()
