@@ -48,6 +48,7 @@ class TaskManager{
         tasks.push_back(task);
 
         cout << "Task added successfully!! ";
+        return;
         
       }
 
@@ -63,6 +64,8 @@ class TaskManager{
             cout << "Description" << task.description;
         }
         cout << "endl";
+
+        return ;
 
       }
 
@@ -81,7 +84,7 @@ class TaskManager{
             cout << "Enter new description: ";
             getline(cin, task.description);
 
-            cout << "Enter new priority (3 = High, 2 = Medium, 1 = Low): ";
+            cout << "Enter new priority (3, 2, 1): ";
             cin >> task.priority;
 
             cout << "Enter new deadline (YYYY-MM-DD): ";
