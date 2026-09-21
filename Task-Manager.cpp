@@ -16,8 +16,7 @@ struct Task
 class TaskManager
 {
 private:
-    vector<Task> tasks;
-    priority_queue<Task,vector<Task>,ComparePriority> priorityTasks;
+    vector<Task> tasks; 
     int nextnum = 1;
 
 public:
@@ -50,8 +49,7 @@ public:
 
         task.completed = false;
 
-        tasks.push_back(task);
-        priorityTasks.push(task);
+        tasks.push_back(task); 
 
         cout << "Task added successfully!! ";
         return;
