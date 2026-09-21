@@ -115,12 +115,16 @@ public:
             if(tasks[i].id = id){
                 tasks.erase(tasks.begin()+i);
                 return ;
-            }
-
-        }
-        
+            } 
+        } 
     cout << "Task Not Found"; 
     }
+
+void completeTasks(){
+
+    }
+
+
 };
 
 int main()
@@ -132,7 +136,8 @@ int main()
     manager.displayTasks();
     manager.updateTasks();
     manager.deletetask();
-    manager.displayTasks();
+    manager.displayTasks(); 
+    manager.completeTask();
 
     return 0;
 }
