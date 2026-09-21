@@ -23,7 +23,10 @@ class TaskManager{
         task.id = nextnum++;
         
         cout << "Enter Task Title";
-        getline(cin >> ws, )
+        getline(cin >> ws, task.title);
+
+        cout >> "Enter description: ";
+        getline(cin , task.description);
 
 
       }
