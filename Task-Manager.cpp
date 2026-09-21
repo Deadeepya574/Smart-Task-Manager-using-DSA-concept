@@ -157,7 +157,12 @@ public:
                 pq.push(task);
             }
         }
-        
+        if(pq.empty()){
+            cout << "All completed";
+            return;
+        }
+
+        Task task = pq.top();
 
         cout << "ID       : " << task.id << endl;
         cout << "Title    : " << task.title << endl;
