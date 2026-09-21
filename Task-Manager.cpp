@@ -175,6 +175,8 @@ public:
         else
             cout << "Low";
     }
+
+    void searchTask(){}
 };
 
 struct ComparePriority
