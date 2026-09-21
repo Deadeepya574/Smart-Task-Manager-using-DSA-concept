@@ -57,6 +57,7 @@ class TaskManager{
 int main(){
      
 
-    
+    TaskManager manager;
+    manager.addTask();
     return 0;
 }
