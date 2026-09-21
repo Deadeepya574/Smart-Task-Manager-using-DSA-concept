@@ -139,8 +139,9 @@ public:
 
 
 struct ComparePriority{
-    bool operator()()
- 
+    bool operator()(const Task& a, const Task& b){
+        return a.priority < b.priority;
+    } 
 }
 
 int main()
