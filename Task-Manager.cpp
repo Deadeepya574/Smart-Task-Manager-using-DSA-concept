@@ -176,7 +176,7 @@ public:
             cout << "Low";
     }
 
-    void searchTask(){
+    void searchTaskbyid(){
         int id;
         cout << "Enter id to search";
         cin >> id;
@@ -215,6 +215,11 @@ public:
             }
         }
         cout << "Task Not Found";
+    }
+
+
+    void searchbyTitle(){
+        
     }
 };
 
