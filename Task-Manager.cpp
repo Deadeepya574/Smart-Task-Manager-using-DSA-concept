@@ -182,7 +182,9 @@ public:
         cin >> id;
 
         for(const Task& task : tasks){
-            if(task.id = i)
+            if(task.id == id ){
+                
+            }
         }
     }
 };
