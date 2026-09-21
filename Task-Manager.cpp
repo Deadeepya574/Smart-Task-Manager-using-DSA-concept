@@ -111,7 +111,12 @@ public:
     void deletetask(){
         int id;
         cout << "Enter id to delete";
-        for(int i = 0;i<tasks)
+        for(int i = 0;i<tasks.size();i++){
+            if(tasks[i].id = id){
+                tasks.erase(tasks.begin()+i);
+                return
+            }
+        }
     }
 
  
