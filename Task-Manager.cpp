@@ -35,7 +35,9 @@ class TaskManager{
         cin >> task.deadline;
 
         cout << "Enter Category: ";
-        getline(cin >> ws, )
+        getline(cin >> ws, task.category);
+
+        
 
 
 
