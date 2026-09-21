@@ -52,7 +52,12 @@ class TaskManager{
       }
 
       void displaytasks(){
-        
+        if(tasks.empty()){
+            cout << "No tasks available";
+            return ;
+        }
+
+        for()
 
       }
 };
