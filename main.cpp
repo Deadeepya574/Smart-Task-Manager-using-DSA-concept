@@ -18,5 +18,6 @@ int main(){
     task1.id = 1;
     task1.title = "Learn c++ in 2 days";
     task1.description = "learning c++";
-    task
+    task1.priority = 1;
+    task1.deadline = 
 }
