@@ -37,8 +37,17 @@ class TaskManager{
         cout << "Enter Category: ";
         getline(cin >> ws, task.category);
 
-        
+        char choice;
+        cout << "Is this a recurring task? (y/n): ";
+        cin >> choice;
 
+        task.recurring = (choice == 'y' || choice == 'Y');
+
+        task.completed = false;
+
+        tasks.push_back(task);
+
+        
 
 
       }
