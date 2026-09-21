@@ -5,5 +5,11 @@ struct Task{
     int id;
     string title;
     string description;
-    int prio
+    int priority;
+    string deadline;
+    bool completed;
+    string category;
+    bool recurring;
 };
+
+
