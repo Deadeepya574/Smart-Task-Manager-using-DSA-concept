@@ -241,7 +241,7 @@ public:
         }
     }
     if(!found){
-        cout << "No Task Foun"
+        cout << "No Task Found";
     }
     }
 };
@@ -265,6 +265,10 @@ main()
     manager.displayTasks();
     manager.completeTasks();
     manager.shownextpriorityTask();
+
+    manager.searchTask();
+
+    manager.searchByTitle();
 
     return 0;
 }
