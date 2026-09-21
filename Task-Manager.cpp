@@ -255,7 +255,9 @@ public:
     }
 
     void sortbydeadline(){
-        sort(tasks.begin())
+        sort(tasks.begin(),tasks.end(),[](const Task& a,const Task& b){
+            return a.deadline < b.deadline;
+        })
     }
 
 
