@@ -145,6 +145,17 @@ public:
         }
         Task task = priorityTasks.top();
 
+    cout << "ID       : " << task.id << endl;
+    cout << "Title    : " << task.title << endl;
+    cout << "Priority : ";
+
+    if (task.priority == 3)
+        cout << "High";
+    else if (task.priority == 2)
+        cout << "Medium";
+    else
+        cout << "Low";
+
     }
 };
 
@@ -168,6 +179,7 @@ int main()
     manager.deletetask();
     manager.displayTasks(); 
     manager.completeTask();
+    manager.shownextpriorityTask();
 
     return 0;
 }
