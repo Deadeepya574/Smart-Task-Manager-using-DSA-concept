@@ -244,6 +244,12 @@ public:
         cout << "No Task Found";
     }
     }
+
+    void sortbypriority(){
+        
+    }
+
+
 };
 
 struct ComparePriority
