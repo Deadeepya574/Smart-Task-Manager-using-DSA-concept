@@ -17,7 +17,7 @@ class TaskManager{
      vector<Task> tasks;
      int nextnum =1 ;
     public:
-      void addtask(){
+      void addTask(){
         Task task;
 
         task.id = nextnum++;
