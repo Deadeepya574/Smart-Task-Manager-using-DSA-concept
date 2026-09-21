@@ -66,9 +66,39 @@ class TaskManager{
 
       }
 
-      void updatetasks(){
-        
-      }
+      void updateTask() {
+
+    int id;
+    cout << "\nEnter Task ID to update: ";
+    cin >> id;
+
+    for (Task& task : tasks) {
+
+        if (task.id == id) {
+
+            cout << "\Task found!\n";
+
+            cout << "Enter new title: ";
+            getline(cin >> ws, task.title);
+
+            cout << "Enter new description: ";
+            getline(cin, task.description);
+
+            cout << "Enter new priority (3 = High, 2 = Medium, 1 = Low): ";
+            cin >> task.priority;
+
+            cout << "Enter new deadline (YYYY-MM-DD): ";
+            cin >> task.deadline;
+
+            cout << "Enter new category: ";
+            getline(cin >> ws, task.category);
+
+            cout << "\nTask updated successfully!\n";
+            return;
+        }
+    } 
+    
+}
 
 
 };
