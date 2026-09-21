@@ -108,6 +108,12 @@ public:
         }
     }
 
+    void deletetask(){
+        int id;
+        cout << "Enter id to delete";
+        
+    }
+
  
 };
 
