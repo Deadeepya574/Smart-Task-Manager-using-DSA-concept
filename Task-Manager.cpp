@@ -12,7 +12,7 @@ struct Task{
     bool recurring;
 };
 
-
+class TaskManager
 
 int main(){
     Task task1;
