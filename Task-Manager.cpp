@@ -115,5 +115,7 @@ int main()
     manager.addTask();
     manager.addTask();
     manager.displaytasks();
+    manager.updateTasks();
+
     return 0;
 }
