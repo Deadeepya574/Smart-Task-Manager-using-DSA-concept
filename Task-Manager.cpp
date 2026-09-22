@@ -33,7 +33,7 @@ struct ComparePriority
     {
         return a.priority < b.priority;
     }
-}
+};
 
 class TaskManager
 {
@@ -298,10 +298,7 @@ public:
                      << endl;
 
                 cout << "Category    : " << task.category << endl;
-
-                cout << "Recurring   : "
-                     << (task.recurring ? "Yes" : "No")
-                     << endl;
+ 
 
                 return;
             }
@@ -569,6 +566,7 @@ int main()
     do
     {
         cout << "========== SMART TASK MANAGER ==========";
+        cout << endl;
         cout << "1.  Add Task\n";
         cout << "2.  Display Tasks\n";
         cout << "3.  Update Task\n";
