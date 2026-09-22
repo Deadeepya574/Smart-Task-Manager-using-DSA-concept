@@ -109,7 +109,7 @@ public:
             cout << "Title" << task.title;
             cout << "Description" << task.description;
         }
-        cout << "endl";
+        cout << endl;
 
         return;
     }
@@ -524,7 +524,7 @@ struct ComparePriority
         return a.priority < b.priority;
     }
 } 
-main()
+int main()
 {
 
     TaskManager manager;
