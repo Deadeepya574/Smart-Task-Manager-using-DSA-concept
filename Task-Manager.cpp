@@ -13,20 +13,21 @@ struct Task
     bool recurring;
 };
 
-enum class ActionType
-{
+
+enum class ActionType{
     ADD,
     DELETE,
     UPDATE,
     COMPLETE
 };
 
-struct Action
-{
+struct Action {
     ActionType type;
     Task oldTask;
     Task newTask;
 };
+
+
 
 class TaskManager
 {
@@ -37,19 +38,18 @@ private:
     int nextnum = 1;
 
 public:
-    int findTaskIndex(int id)
-    {
 
-        for (int i = 0; i < tasks.size(); i++)
-        {
+    int findTaskIndex(int id) {
 
-            if (tasks[i].id == id)
-                return i;
-        }
+    for (int i = 0; i < tasks.size(); i++) {
 
-        return -1;
+        if (tasks[i].id == id)
+            return i;
     }
 
+    return -1;
+}
+    
     void addTask()
     {
         Task task;
@@ -87,8 +87,7 @@ public:
 
         undoStack.push(action);
 
-        while (!redoStack.empty())
-        {
+        while(!redoStack.empty()){
             redoStack.pop();
         }
 
@@ -115,72 +114,85 @@ public:
         return;
     }
 
-    void updateTasks()
+   void updateTask() {
 
-    {
+    int id;
 
-        int id;
-        cout << "\nEnter Task ID to update: ";
-        cin >> id;
+    cout << "\nEnter Task ID to update: ";
+    cin >> id;
 
-        for (Task &task : tasks)
-        {
+    int index = findTaskIndex(id);
 
-            if (task.id == id)
-            {
-                cout << "Enter new title: ";
-                getline(cin >> ws, task.title);
-
-                cout << "Enter new description: ";
-                getline(cin, task.description);
-
-                cout << "Enter new priority (3, 2, 1): ";
-                cin >> task.priority;
-
-                cout << "Enter new deadline (YYYY-MM-DD): ";
-                cin >> task.deadline;
-
-                cout << "Enter new category: ";
-                getline(cin >> ws, task.category);
-
-                cout << "\nTask updated successfully!\n";
-                return;
-            }
-        }
+    if (index == -1) {
+        cout << "\nTask not found.\n";
+        return;
     }
 
-    void deleteTask()
-    {
+    // Save old state
+    Task oldTask = tasks[index];
 
-        int id;
+    cout << "\nEnter new title: ";
+    getline(cin >> ws, tasks[index].title);
 
-        cout << "\nEnter Task ID to delete: ";
-        cin >> id;
+    cout << "Enter new description: ";
+    getline(cin, tasks[index].description);
 
-        int index = findTaskIndex(id);
+    cout << "Enter new priority (3 = High, 2 = Medium, 1 = Low): ";
+    cin >> tasks[index].priority;
 
-        if (index == -1)
-        {
-            cout << "\nTask not found.\n";
-            return;
-        }
+    cout << "Enter new deadline (YYYY-MM-DD): ";
+    cin >> tasks[index].deadline;
 
-        Task deletedTask = tasks[index];
+    cout << "Enter new category: ";
+    getline(cin >> ws, tasks[index].category);
 
-        tasks.erase(tasks.begin() + index);
+    // Save new state
+    Task newTask = tasks[index];
 
-        Action action;
+    // Store action
+    Action action;
 
-        action.type = ActionType::DELETE;
-        action.oldTask = deletedTask;
+    action.type = ActionType::UPDATE;
+    action.oldTask = oldTask;
+    action.newTask = newTask;
 
-        undoStack.push(action);
+    undoStack.push(action); 
+    while (!redoStack.empty())
+        redoStack.pop();
 
-        while (!redoStack.empty())
-            redoStack.pop();
+    cout << "\nTask updated successfully!\n";
+}
 
-        cout << "Task deleted successfully!";
+    void deleteTask() {
+
+    int id;
+
+    cout << "\nEnter Task ID to delete: ";
+    cin >> id;
+
+    int index = findTaskIndex(id);
+
+    if (index == -1) {
+        cout << "\nTask not found.\n";
+        return;
     }
+
+    Task deletedTask = tasks[index];
+
+    tasks.erase(tasks.begin() + index);
+
+    Action action;
+
+    action.type = ActionType::DELETE;
+    action.oldTask = deletedTask;
+
+    undoStack.push(action);
+
+    while (!redoStack.empty())
+        redoStack.pop();
+
+    cout << "Task deleted successfully!";
+}
 
     void completeTasks()
     {
@@ -211,15 +223,12 @@ public:
         }
         priority_queue<Task, vector<Task>, ComparePriority> pq;
 
-        for (const Task &task : tasks)
-        {
-            if (!task.completed)
-            {
+        for(const Task& task : tasks){
+            if(!task.completed){
                 pq.push(task);
             }
         }
-        if (pq.empty())
-        {
+        if(pq.empty()){
             cout << "All completed";
             return;
         }
@@ -238,100 +247,93 @@ public:
             cout << "Low";
     }
 
-    void searchTaskbyid()
-    {
+    void searchTaskbyid(){
         int id;
         cout << "Enter id to search";
         cin >> id;
 
-        for (const Task &task : tasks)
-        {
-            if (task.id == id)
-            {
+        for(const Task& task : tasks){
+            if(task.id == id ){
 
-                cout << "ID          : " << task.id << endl;
-                cout << "Title       : " << task.title << endl;
-                cout << "Description : " << task.description << endl;
+            cout << "ID          : " << task.id << endl;
+            cout << "Title       : " << task.title << endl;
+            cout << "Description : " << task.description << endl;
 
-                cout << "Priority    : ";
+            cout << "Priority    : ";
 
-                if (task.priority == 3)
-                    cout << "High";
-                else if (task.priority == 2)
-                    cout << "Medium";
-                else
-                    cout << "Low";
+            if (task.priority == 3)
+                cout << "High";
+            else if (task.priority == 2)
+                cout << "Medium";
+            else
+                cout << "Low";
 
-                cout << endl;
+            cout << endl;
 
-                cout << "Deadline    : " << task.deadline << endl;
+            cout << "Deadline    : " << task.deadline << endl;
 
-                cout << "Status      : "
-                     << (task.completed ? "Completed" : "Pending")
-                     << endl;
+            cout << "Status      : "
+                 << (task.completed ? "Completed" : "Pending")
+                 << endl;
 
-                cout << "Category    : " << task.category << endl;
+            cout << "Category    : " << task.category << endl;
 
-                cout << "Recurring   : "
-                     << (task.recurring ? "Yes" : "No")
-                     << endl;
+            cout << "Recurring   : "
+                 << (task.recurring ? "Yes" : "No")
+                 << endl;
 
-                return;
+                 return;
             }
         }
         cout << "Task Not Found";
     }
 
-    void searchbyTitle()
-    {
+
+    void searchbyTitle(){
         string title;
         cout << "Enter the title to search";
         cin >> title;
 
         bool found = false;
-        for (const Task &task : tasks)
-        {
+        for (const Task& task : tasks) {
 
-            if (task.title == title)
-            {
+        if (task.title == title) {
 
-                cout << "\nTask Found!";
-                cout << "\nID       : " << task.id;
-                cout << "\nTitle    : " << task.title;
-                cout << "\nPriority : " << task.priority;
-                cout << "\nDeadline : " << task.deadline;
-                cout << "\nStatus   : "
-                     << (task.completed ? "Completed" : "Pending")
-                     << endl;
+            cout << "\nTask Found!";
+            cout << "\nID       : " << task.id;
+            cout << "\nTitle    : " << task.title;
+            cout << "\nPriority : " << task.priority;
+            cout << "\nDeadline : " << task.deadline;
+            cout << "\nStatus   : "
+                 << (task.completed ? "Completed" : "Pending")
+                 << endl;
 
-                found = true;
-            }
-        }
-        if (!found)
-        {
-            cout << "No Task Found";
+            found = true;
         }
     }
+    if(!found){
+        cout << "No Task Found";
+    }
+    }
 
-    void sortbypriority()
-    {
-        sort(tasks.begin(), tasks.end(), [](const Task &a, const Task &b)
-             { return a.priority > b.priority; });
+    void sortbypriority(){
+        sort(tasks.begin(),tasks.end(),[](const Task& a , const Task& b){
+            return a.priority > b.priority;
+        });
 
         cout << "Tasks sorted by priority";
         displayTasks();
     }
 
-    void sortbydeadline()
-    {
-        sort(tasks.begin(), tasks.end(), [](const Task &a, const Task &b)
-             { return a.deadline < b.deadline; });
+    void sortbydeadline(){
+        sort(tasks.begin(),tasks.end(),[](const Task& a,const Task& b){
+            return a.deadline < b.deadline;
+        });
         cout << "Tasks sorted by Deadline";
         displayTasks();
     }
 
-    void filterbyPriority()
-    {
+    void filterbyPriority(){
         int priority;
 
         cout << "Enter Priority to filter";
@@ -339,31 +341,27 @@ public:
 
         bool found = false;
 
-        for (const Task &task : tasks)
-        {
+        for (const Task& task : tasks) {
 
-            if (task.priority == priority)
-            {
+        if (task.priority == priority) {
 
-                cout << "\nID       : " << task.id;
-                cout << "\nTitle    : " << task.title;
-                cout << "\nPriority : " << task.priority;
-                cout << "\nDeadline : " << task.deadline;
-                cout << "\nStatus   : "
-                     << (task.completed ? "Completed" : "Pending");
+            cout << "\nID       : " << task.id;
+            cout << "\nTitle    : " << task.title;
+            cout << "\nPriority : " << task.priority;
+            cout << "\nDeadline : " << task.deadline;
+            cout << "\nStatus   : "
+                 << (task.completed ? "Completed" : "Pending"); 
 
-                found = true;
-            }
+            found = true;
         }
-        if (!found)
-        {
-            cout << "No tasks with this priority";
-        }
-        cout << endl;
+    }
+    if(!found){
+        cout << "No tasks with this priority";
+    }
+    cout << endl;
     }
 
-    void filterbyStatus()
-    {
+    void filterbyStatus(){
         int choice;
 
         cout << "Enter num of status";
@@ -371,166 +369,145 @@ public:
 
         bool found = false;
 
-        for (const Task &task : tasks)
-        {
+         for (const Task& task : tasks) {
 
-            bool isCompleted = task.completed;
+        bool isCompleted = task.completed;
 
-            if ((choice == 1 && !isCompleted) ||
-                (choice == 2 && isCompleted))
-            {
+        if ((choice == 1 && !isCompleted) ||
+            (choice == 2 && isCompleted)) {
 
-                cout << "\nID       : " << task.id;
-                cout << "\nTitle    : " << task.title;
-                cout << "\nPriority : " << task.priority;
-                cout << "\nDeadline : " << task.deadline;
-                cout << "\nStatus   : "
-                     << (task.completed ? "Completed" : "Pending");
+            cout << "\nID       : " << task.id;
+            cout << "\nTitle    : " << task.title;
+            cout << "\nPriority : " << task.priority;
+            cout << "\nDeadline : " << task.deadline;
+            cout << "\nStatus   : "
+                 << (task.completed ? "Completed" : "Pending"); 
 
-                found = true;
-            }
+            found = true;
         }
-
-        if (!found)
-        {
-            cout << "\nNo matching tasks found.\n";
-        }
-
-        cout << endl;
     }
 
-    void filterTasks(int priority, bool completed)
-    {
+    if (!found) {
+        cout << "\nNo matching tasks found.\n";
+    }
+
+    cout << endl;
+    }
+
+
+    void filterTasks(int priority, bool completed){
         bool found = false;
 
-        for (const Task &task : tasks)
-        {
-            if (task.priority == priority && task.completed == completed)
-            {
+        for(const Task& task : tasks){
+            if(task.priority == priority && task.completed == completed){
                 cout << "Status: " << (task.completed ? "Completed" : "Pending");
 
-                found = true;
+            found = true;
             }
         }
-        if (!found)
-        {
+        if(!found){
             cout << "No matching tasks found";
         }
     }
 
-    void undo()
-    {
 
-        if (undoStack.empty())
-        {
-            cout << "\nNothing to undo.\n";
-            return;
-        }
+    void undo() {
 
-        Action action = undoStack.top();
-
-        undoStack.pop();
-
-        if (action.type == ActionType::ADD)
-        {
-
-            int index = findTaskIndex(action.newTask.id);
-
-            if (index != -1)
-            {
-                tasks.erase(tasks.begin() + index);
-            }
-        }
-
-        else if (action.type == ActionType::DELETE)
-        {
-
-            tasks.push_back(action.oldTask);
-        }
-
-        else if (action.type == ActionType::UPDATE)
-        {
-
-            int index = findTaskIndex(action.newTask.id);
-
-            if (index != -1)
-            {
-                tasks[index] = action.oldTask;
-            }
-        }
-
-        else if (action.type == ActionType::COMPLETE)
-        {
-
-            int index = findTaskIndex(action.newTask.id);
-
-            if (index != -1)
-            {
-                tasks[index] = action.oldTask;
-            }
-        }
-
-        redoStack.push(action);
-
-        cout << "\nUndo successful!\n";
+    if (undoStack.empty()) {
+        cout << "\nNothing to undo.\n";
+        return;
     }
 
-    void redo()
-    {
+    Action action = undoStack.top();
 
-        if (redoStack.empty())
-        {
-            cout << "\nNothing to redo.\n";
-            return;
+    undoStack.pop();
+
+    if (action.type == ActionType::ADD) {
+
+        int index = findTaskIndex(action.newTask.id);
+
+        if (index != -1) {
+            tasks.erase(tasks.begin() + index);
         }
-
-        Action action = redoStack.top();
-
-        redoStack.pop();
-
-        if (action.type == ActionType::ADD)
-        {
-
-            tasks.push_back(action.newTask);
-        }
-
-        else if (action.type == ActionType::DELETE)
-        {
-
-            int index = findTaskIndex(action.oldTask.id);
-
-            if (index != -1)
-            {
-                tasks.erase(tasks.begin() + index);
-            }
-        }
-
-        else if (action.type == ActionType::UPDATE)
-        {
-
-            int index = findTaskIndex(action.oldTask.id);
-
-            if (index != -1)
-            {
-                tasks[index] = action.newTask;
-            }
-        }
-
-        else if (action.type == ActionType::COMPLETE)
-        {
-
-            int index = findTaskIndex(action.oldTask.id);
-
-            if (index != -1)
-            {
-                tasks[index] = action.newTask;
-            }
-        }
-
-        undoStack.push(action);
-
-        cout << "\nRedo successful!\n";
     }
+
+    else if (action.type == ActionType::DELETE) {
+
+        tasks.push_back(action.oldTask);
+    }
+
+    else if (action.type == ActionType::UPDATE) {
+
+        int index = findTaskIndex(action.newTask.id);
+
+        if (index != -1) {
+            tasks[index] = action.oldTask;
+        }
+    }
+
+    else if (action.type == ActionType::COMPLETE) {
+
+        int index = findTaskIndex(action.newTask.id);
+
+        if (index != -1) {
+            tasks[index] = action.oldTask;
+        }
+    }
+
+    redoStack.push(action);
+
+    cout << "\nUndo successful!\n";
+}
+
+
+    void redo() {
+
+    if (redoStack.empty()) {
+        cout << "\nNothing to redo.\n";
+        return;
+    }
+
+    Action action = redoStack.top();
+
+    redoStack.pop();
+
+    if (action.type == ActionType::ADD) {
+
+        tasks.push_back(action.newTask);
+    }
+
+    else if (action.type == ActionType::DELETE) {
+
+        int index = findTaskIndex(action.oldTask.id);
+
+        if (index != -1) {
+            tasks.erase(tasks.begin() + index);
+        }
+    }
+
+    else if (action.type == ActionType::UPDATE) {
+
+        int index = findTaskIndex(action.oldTask.id);
+
+        if (index != -1) {
+            tasks[index] = action.newTask;
+        }
+    }
+
+    else if (action.type == ActionType::COMPLETE) {
+
+        int index = findTaskIndex(action.oldTask.id);
+
+        if (index != -1) {
+            tasks[index] = action.newTask;
+        }
+    }
+
+    undoStack.push(action);
+
+    cout << "\nRedo successful!\n";
+}
+
 };
 
 struct ComparePriority
@@ -539,7 +516,8 @@ struct ComparePriority
     {
         return a.priority < b.priority;
     }
-} main()
+} 
+main()
 {
 
     TaskManager manager;
