@@ -27,6 +27,14 @@ struct Action
     Task newTask;
 };
 
+struct ComparePriority
+{
+    bool operator()(const Task &a, const Task &b)
+    {
+        return a.priority < b.priority;
+    }
+} 
+
 class TaskManager
 {
 private:
@@ -551,15 +559,6 @@ public:
         cout << "\nRedo successful!\n";
     }
 };
-
-struct ComparePriority
-{
-    bool operator()(const Task &a, const Task &b)
-    {
-        return a.priority < b.priority;
-    }
-} 
-
 
 int main()
 {
