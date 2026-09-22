@@ -34,7 +34,7 @@ class TaskManager
 private:
     vector<Task> tasks;
     stack<Action> undoStack;
-    stack,Action>
+    stack<Action>
     int nextnum = 1;
 
 public:
