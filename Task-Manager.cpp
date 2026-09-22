@@ -329,7 +329,8 @@ public:
 
         for(const Task& task : tasks){
             if(task.priority == priority && task.completed == completed){
-                cout << "Status: " << (task.completed ? "Completed" : )
+                cout << "Status: " << (task.completed ? "Completed" : "Pending");
+                
             }
         }
     }
