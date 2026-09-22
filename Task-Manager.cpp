@@ -69,6 +69,9 @@ public:
 
         tasks.push_back(task);
 
+        Action action;
+        action.type = ActionType::
+
         cout << "Task added successfully!! ";
         return;
     }
