@@ -70,7 +70,8 @@ public:
         tasks.push_back(task);
 
         Action action;
-        action.type = ActionType::
+        action.type = ActionType::ADD;
+        
 
         cout << "Task added successfully!! ";
         return;
