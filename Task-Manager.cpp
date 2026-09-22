@@ -150,6 +150,10 @@ public:
         }
         cout << "Task Not Found";
 
+        Task deletedTask = tasks[index];
+        tasks.erase(tasks.begin() + index);
+        
+
 
     }
 
