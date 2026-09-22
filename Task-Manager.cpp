@@ -531,10 +531,10 @@ main()
     manager.addTask();
     manager.addTask();
     manager.displayTasks();
-    manager.updateTasks();
-    manager.deletetask();
+    manager.updateTask();
+    manager.deleteTask();
     manager.displayTasks();
-    manager.completeTasks();
+    manager.completeTask();
     manager.shownextpriorityTask();
 
     manager.searchTaskbyid();
@@ -544,6 +544,31 @@ main()
     manager.sortbypriority();
 
     manager.sortbydeadline();
+
+
+
+    manager.addTask();
+    manager.addTask();
+
+    manager.displayTasks(); 
+    manager.updateTask();
+
+    manager.displayTasks(); 
+    manager.undo();
+
+    manager.displayTasks(); 
+    manager.redo();
+
+    manager.displayTasks(); 
+    manager.completeTask();
+
+    manager.displayTasks(); 
+    manager.undo();
+
+    manager.displayTasks(); 
+    manager.redo();
+
+    manager.displayTasks();
 
     return 0;
 }
