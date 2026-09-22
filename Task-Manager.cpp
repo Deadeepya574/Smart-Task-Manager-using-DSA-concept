@@ -144,6 +144,7 @@ public:
         {
             if (tasks[i].id = id)
             {
+                
                 tasks.erase(tasks.begin() + i);
                 return;
             }
@@ -152,7 +153,7 @@ public:
 
         Task deletedTask = tasks[index];
         tasks.erase(tasks.begin() + index);
-        
+
 
 
     }
