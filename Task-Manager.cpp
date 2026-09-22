@@ -331,7 +331,7 @@ public:
     {
         string title;
         cout << "Enter the title to search";
-        cin >> title;
+        getline(cin >> ws,title);
 
         bool found = false;
         for (const Task &task : tasks)
