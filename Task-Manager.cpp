@@ -396,7 +396,102 @@ public:
     }
 
 
-    void 
+    void undo() {
+
+    if (undoStack.empty()) {
+        cout << "\nNothing to undo.\n";
+        return;
+    }
+
+    Action action = undoStack.top();
+
+    undoStack.pop();
+
+    if (action.type == ActionType::ADD) {
+
+        int index = findTaskIndex(action.newTask.id);
+
+        if (index != -1) {
+            tasks.erase(tasks.begin() + index);
+        }
+    }
+
+    else if (action.type == ActionType::DELETE) {
+
+        tasks.push_back(action.oldTask);
+    }
+
+    else if (action.type == ActionType::UPDATE) {
+
+        int index = findTaskIndex(action.newTask.id);
+
+        if (index != -1) {
+            tasks[index] = action.oldTask;
+        }
+    }
+
+    else if (action.type == ActionType::COMPLETE) {
+
+        int index = findTaskIndex(action.newTask.id);
+
+        if (index != -1) {
+            tasks[index] = action.oldTask;
+        }
+    }
+
+    redoStack.push(action);
+
+    cout << "\nUndo successful!\n";
+}
+
+
+void redo() {
+
+    if (redoStack.empty()) {
+        cout << "\nNothing to redo.\n";
+        return;
+    }
+
+    Action action = redoStack.top();
+
+    redoStack.pop();
+
+    if (action.type == ActionType::ADD) {
+
+        tasks.push_back(action.newTask);
+    }
+
+    else if (action.type == ActionType::DELETE) {
+
+        int index = findTaskIndex(action.oldTask.id);
+
+        if (index != -1) {
+            tasks.erase(tasks.begin() + index);
+        }
+    }
+
+    else if (action.type == ActionType::UPDATE) {
+
+        int index = findTaskIndex(action.oldTask.id);
+
+        if (index != -1) {
+            tasks[index] = action.newTask;
+        }
+    }
+
+    else if (action.type == ActionType::COMPLETE) {
+
+        int index = findTaskIndex(action.oldTask.id);
+
+        if (index != -1) {
+            tasks[index] = action.newTask;
+        }
+    }
+
+    undoStack.push(action);
+
+    cout << "\nRedo successful!\n";
+}
 
 };
 
