@@ -291,6 +291,13 @@ public:
     }
 
     void filterbyStatus(){
+        int choice;
+
+        cout << "Enter num of status";
+        cin >> choice;
+
+        bool found = false;
+
         
     }
 
