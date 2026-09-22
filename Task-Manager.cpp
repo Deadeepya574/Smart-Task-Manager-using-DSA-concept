@@ -127,8 +127,7 @@ public:
         cout << "\nTask not found.\n";
         return;
     }
-
-    // Save old state
+ 
     Task oldTask = tasks[index];
 
     cout << "\nEnter new title: ";
@@ -144,12 +143,8 @@ public:
     cin >> tasks[index].deadline;
 
     cout << "Enter new category: ";
-    getline(cin >> ws, tasks[index].category);
-
-    // Save new state
-    Task newTask = tasks[index];
-
-    // Store action
+    getline(cin >> ws, tasks[index].category); 
+    Task newTask = tasks[index]; 
     Action action;
 
     action.type = ActionType::UPDATE;
@@ -194,25 +189,37 @@ public:
     cout << "Task deleted successfully!";
 }
 
-    void completeTasks()
-    {
-        for (Task &task : tasks)
-        {
-            if (task.id == id)
-            {
-                task.completed = !task.completed;
-                if (task.completed)
-                {
-                    cout << "Task Completed";
-                }
-                else
-                {
-                    cout << "Task Pending";
-                }
-                return;
-            }
-        }
-    }
+    void completeTask() {
+
+    int id;
+
+    cout << "\nEnter Task ID: ";
+    cin >> id;
+
+    int index = findTaskIndex(id);
+
+    if (index == -1) {
+        cout << "\nTask not found.\n";
+        return;
+    } 
+    Task oldTask = tasks[index]; 
+    tasks[index].completed = !tasks[index].completed; 
+    Task newTask = tasks[index]; 
+    Action action;
+
+    action.type = ActionType::COMPLETE;
+    action.oldTask = oldTask;
+    action.newTask = newTask;
+
+    undoStack.push(action); 
+    while (!redoStack.empty())
+        redoStack.pop();
+
+    if (tasks[index].completed)
+        cout << "\nTask marked as COMPLETED.\n";
+    else
+        cout << "\nTask marked as PENDING.\n";
+}
 
     void shownextpriorityTask()
     {
