@@ -264,7 +264,27 @@ public:
 
     void filterbyPriority(){
         int priority;
-        
+
+        cout << "Enter Priority to filter";
+        cin >> priority;
+
+        bool found = false;
+
+        for (const Task& task : tasks) {
+
+        if (task.priority == priority) {
+
+            cout << "\nID       : " << task.id;
+            cout << "\nTitle    : " << task.title;
+            cout << "\nPriority : " << task.priority;
+            cout << "\nDeadline : " << task.deadline;
+            cout << "\nStatus   : "
+                 << (task.completed ? "Completed" : "Pending");
+            cout << "\n--------------------------";
+
+            found = true;
+        }
+    }
     }
 };
 
