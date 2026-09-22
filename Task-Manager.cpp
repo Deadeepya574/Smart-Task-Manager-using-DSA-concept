@@ -290,7 +290,9 @@ public:
     cout << endl;
     }
 
-    void filterby
+    void filterbyStatus(){
+        
+    }
 
 
 
