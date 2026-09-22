@@ -98,23 +98,44 @@ public:
     }
 
     void displayTasks()
+{
+    if (tasks.empty())
     {
-        if (tasks.empty())
-        {
-            cout << "No tasks available";
-            return;
-        }
-
-        for (Task &task : tasks)
-        {
-            cout << "ID" << task.id;
-            cout << "Title" << task.title;
-            cout << "Description" << task.description;
-        }
-        cout << endl;
-
+        cout << "\nNo tasks available.\n";
         return;
     }
+
+    cout << "\n========== ALL TASKS ==========\n";
+
+    for (const Task& task : tasks)
+    {
+        cout << "\n-----------------------------\n";
+        cout << "ID          : " << task.id << endl;
+        cout << "Title       : " << task.title << endl;
+        cout << "Description : " << task.description << endl;
+
+        cout << "Priority    : ";
+
+        if (task.priority == 3)
+            cout << "High";
+        else if (task.priority == 2)
+            cout << "Medium";
+        else
+            cout << "Low";
+
+        cout << endl;
+
+        cout << "Deadline    : " << task.deadline << endl;
+
+        cout << "Status      : "
+             << (task.completed ? "Completed" : "Pending")
+             << endl;
+
+        cout << "Category    : " << task.category << endl;
+    }
+
+    cout << "\n-----------------------------\n";
+}
 
     void updateTask()
     {
