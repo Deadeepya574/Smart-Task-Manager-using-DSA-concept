@@ -33,7 +33,7 @@ struct ComparePriority
     {
         return a.priority < b.priority;
     }
-} 
+}
 
 class TaskManager
 {
@@ -562,47 +562,99 @@ public:
 
 int main()
 {
-
     TaskManager manager;
-    manager.addTask();
-    manager.addTask();
-    manager.displayTasks();
-    manager.updateTask();
-    manager.deleteTask();
-    manager.displayTasks();
-    manager.completeTask();
-    manager.shownextpriorityTask();
 
-    manager.searchTaskbyid();
+    int choice;
 
-    manager.searchbyTitle();
+    do
+    {
+        cout << "========== SMART TASK MANAGER ==========";
+        cout << "1.  Add Task\n";
+        cout << "2.  Display Tasks\n";
+        cout << "3.  Update Task\n";
+        cout << "4.  Delete Task\n";
+        cout << "5.  Complete / Incomplete Task\n";
+        cout << "6.  Show Highest Priority Task\n";
+        cout << "7.  Search Task by ID\n";
+        cout << "8.  Search Task by Title\n";
+        cout << "9.  Sort Tasks by Priority\n";
+        cout << "10. Sort Tasks by Deadline\n";
+        cout << "11. Filter Tasks by Priority\n";
+        cout << "12. Filter Tasks by Status\n";
+        cout << "13. Undo\n";
+        cout << "14. Redo\n";
+        cout << "0.  Exit\n";
 
-    manager.sortbypriority();
+        cout << "\nEnter your choice: ";
+        cin >> choice;
 
-    manager.sortbydeadline();
+        switch (choice)
+        {
+        case 1:
+            manager.addTask();
+            break;
 
-    manager.addTask();
-    manager.addTask();
+        case 2:
+            manager.displayTasks();
+            break;
 
-    manager.displayTasks();
-    manager.updateTask();
+        case 3:
+            manager.updateTask();
+            break;
 
-    manager.displayTasks();
-    manager.undo();
+        case 4:
+            manager.deleteTask();
+            break;
 
-    manager.displayTasks();
-    manager.redo();
+        case 5:
+            manager.completeTask();
+            break;
 
-    manager.displayTasks();
-    manager.completeTask();
+        case 6:
+            manager.shownextpriorityTask();
+            break;
 
-    manager.displayTasks();
-    manager.undo();
+        case 7:
+            manager.searchTaskbyid();
+            break;
 
-    manager.displayTasks();
-    manager.redo();
+        case 8:
+            manager.searchbyTitle();
+            break;
 
-    manager.displayTasks();
+        case 9:
+            manager.sortbypriority();
+            break;
+
+        case 10:
+            manager.sortbydeadline();
+            break;
+
+        case 11:
+            manager.filterbyPriority();
+            break;
+
+        case 12:
+            manager.filterbyStatus();
+            break;
+
+        case 13:
+            manager.undo();
+            break;
+
+        case 14:
+            manager.redo();
+            break;
+
+        case 0:
+            cout << "\nExiting Smart Task Manager...\n";
+            break;
+
+        default:
+            cout << "\nInvalid choice. Try again.\n";
+        }
+
+    } while (choice != 0);
 
     return 0;
 }
