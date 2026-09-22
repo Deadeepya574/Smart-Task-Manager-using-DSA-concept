@@ -71,7 +71,13 @@ public:
 
         Action action;
         action.type = ActionType::ADD;
-        
+        action.newTask = task;
+
+        undoStack.push(action);
+
+        while(!redoStack.empty()){
+            redoStack.pop();
+        }
 
         cout << "Task added successfully!! ";
         return;
