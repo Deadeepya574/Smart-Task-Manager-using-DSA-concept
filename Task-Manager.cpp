@@ -327,7 +327,11 @@ public:
     void filterTasks(int priority, bool completed){
         bool found = false;
 
-        for(const Task& task )
+        for(const Task& task : tasks){
+            if(task.priority == priority && task.completed == completed){
+                cout << "Status: " << (task.completed ? "Completed" : )
+            }
+        }
     }
 
 };
