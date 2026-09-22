@@ -14,7 +14,9 @@ struct Task
 };
 
 
-
+enum class ActionType{
+    
+}
 
 class TaskManager
 {
