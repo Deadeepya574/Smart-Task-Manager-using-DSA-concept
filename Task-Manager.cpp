@@ -327,7 +327,7 @@ public:
     void filterTasks(int priority, bool completed){
         bool found = false;
 
-        
+        for(const Task& task )
     }
 
 };
