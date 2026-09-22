@@ -38,6 +38,18 @@ private:
     int nextnum = 1;
 
 public:
+
+    int findTaskIndex(int id) {
+
+    for (int i = 0; i < tasks.size(); i++) {
+
+        if (tasks[i].id == id)
+            return i;
+    }
+
+    return -1;
+}
+    
     void addTask()
     {
         Task task;
@@ -136,27 +148,36 @@ public:
         }
     }
 
-    void deletetask()
-    {
-        int id;
-        cout << "Enter id to delete";
-        for (int i = 0; i < tasks.size(); i++)
-        {
-            if (tasks[i].id = id)
-            {
-                
-                tasks.erase(tasks.begin() + i);
-                return;
-            }
-        }
-        cout << "Task Not Found";
+    void deleteTask() {
 
-        Task deletedTask = tasks[index];
-        tasks.erase(tasks.begin() + index);
+    int id;
 
+    cout << "\nEnter Task ID to delete: ";
+    cin >> id;
 
+    int index = findTaskIndex(id);
 
+    if (index == -1) {
+        cout << "\nTask not found.\n";
+        return;
     }
+
+    Task deletedTask = tasks[index];
+
+    tasks.erase(tasks.begin() + index);
+
+    Action action;
+
+    action.type = ActionType::DELETE;
+    action.oldTask = deletedTask;
+
+    undoStack.push(action);
+
+    while (!redoStack.empty())
+        redoStack.pop();
+
+    cout << "Task deleted successfully!";
+}
 
     void completeTasks()
     {
