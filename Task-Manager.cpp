@@ -310,8 +310,7 @@ public:
             cout << "\nPriority : " << task.priority;
             cout << "\nDeadline : " << task.deadline;
             cout << "\nStatus   : "
-                 << (task.completed ? "Completed" : "Pending");
-            cout << "\n--------------------------";
+                 << (task.completed ? "Completed" : "Pending"); 
 
             found = true;
         }
@@ -325,6 +324,11 @@ public:
     }
 
 
+    void filterTasks(int priority, bool completed){
+        bool found = false;
+
+        
+    }
 
 };
 
