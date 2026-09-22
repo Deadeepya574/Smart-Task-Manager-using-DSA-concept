@@ -15,8 +15,19 @@ struct Task
 
 
 enum class ActionType{
-    
-}
+    ADD,
+    DELETE,
+    UPDATE,
+    COMPLETE
+};
+
+struct Action {
+    ActionType type;
+    Task oldTask;
+    Task newTask;
+};
+
+
 
 class TaskManager
 {
