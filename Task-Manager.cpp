@@ -279,16 +279,21 @@ public:
             cout << "\nPriority : " << task.priority;
             cout << "\nDeadline : " << task.deadline;
             cout << "\nStatus   : "
-                 << (task.completed ? "Completed" : "Pending");
-            cout << "\n--------------------------";
+                 << (task.completed ? "Completed" : "Pending"); 
 
             found = true;
         }
     }
     if(!found){
-        
+        cout << "No tasks with this priority";
     }
+    cout << endl;
     }
+
+    void filterby
+
+
+
 };
 
 struct ComparePriority
