@@ -298,7 +298,30 @@ public:
 
         bool found = false;
 
-        
+         for (const Task& task : tasks) {
+
+        bool isCompleted = task.completed;
+
+        if ((choice == 1 && !isCompleted) ||
+            (choice == 2 && isCompleted)) {
+
+            cout << "\nID       : " << task.id;
+            cout << "\nTitle    : " << task.title;
+            cout << "\nPriority : " << task.priority;
+            cout << "\nDeadline : " << task.deadline;
+            cout << "\nStatus   : "
+                 << (task.completed ? "Completed" : "Pending");
+            cout << "\n--------------------------";
+
+            found = true;
+        }
+    }
+
+    if (!found) {
+        cout << "\nNo matching tasks found.\n";
+    }
+
+    cout << endl;
     }
 
 
