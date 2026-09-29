@@ -22,9 +22,7 @@ This architecture demonstrates a robust inter-process communication pattern, com
     *   [Build the C++ Engine](#build-the-c-engine)
     *   [Set up the Python Backend](#set-up-the-python-backend)
 *   [ Usage](#usage)
-*   [ API Reference](#api-reference)
-*   [ Contributing](#contributing)
-*   [ License](#license)
+*   [ API Reference](#api-reference) 
 *   [ Important Links](#important-links) 
 
 ##  Features
@@ -171,6 +169,4 @@ The Flask backend exposes several endpoints that communicate with the underlying
  
 ## 🔗 Important Links
 
-*   **Repository**: [GitHub - Deadeepya574/Smart-Task-Manager-using-DSA-concept](https://github.com/Deadeepya574/Smart-Task-Manager-using-DSA-concept)
-*   **Issues**: [GitHub Issues](https://github.com/Deadeepya574/Smart-Task-Manager-using-DSA-concept/issues)
- 
+*   **Repository**: [GitHub - Deadeepya574/Smart-Task-Manager-using-DSA-concept](https://github.com/Deadeepya574/Smart-Task-Manager-using-DSA-concept) 
