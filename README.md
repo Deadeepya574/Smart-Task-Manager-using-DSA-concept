@@ -1,4 +1,4 @@
-# Smart Task Manager using DSA Concepts 🧠
+# Smart Task Manager using DSA Concepts 
 
 ![GitHub Stars](https://img.shields.io/github/stars/Deadeepya574/Smart-Task-Manager-using-DSA-concept?style=social)
 ![GitHub Forks](https://img.shields.io/github/forks/Deadeepya574/Smart-Task-Manager-using-DSA-concept?style=social)
