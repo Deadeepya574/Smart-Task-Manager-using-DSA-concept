@@ -12,21 +12,20 @@ This architecture demonstrates a robust inter-process communication pattern, com
 
 ##  Table of Contents
 
-*   [ Description](#-description)
-*   [ Features](#-features)
-*   [ Tech Stack](#%EF%B8%8F-tech-stack)
-*   [ Project Structure](#-project-structure)
-*   [ Installation](#%EF%B8%8F-installation)
+*   [ Description](#description)
+*   [ Features](#features)
+*   [ Tech Stack](#tech-stack)
+*   [ Project Structure](#project-structure)
+*   [ Installation](#installation)
     *   [Prerequisites](#prerequisites)
     *   [Clone the Repository](#clone-the-repository)
     *   [Build the C++ Engine](#build-the-c-engine)
     *   [Set up the Python Backend](#set-up-the-python-backend)
-*   [ Usage](#%E2%96%B6%EF%B8%8F-usage)
-*   [ API Reference](#-api-reference)
-*   [ Contributing](#-contributing)
-*   [ License](#%E2%99%94%EF%B8%8F-license)
-*   [ Important Links](#-important-links)
-*   [udos Footer](#-footer)
+*   [ Usage](#usage)
+*   [ API Reference](#api-reference)
+*   [ Contributing](#contributing)
+*   [ License](#license)
+*   [ Important Links](#important-links) 
 
 ##  Features
 
