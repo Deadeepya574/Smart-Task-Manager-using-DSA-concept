@@ -24,7 +24,7 @@ This architecture demonstrates a robust inter-process communication pattern, com
 *   [ Usage](#%E2%96%B6%EF%B8%8F-usage)
 *   [ API Reference](#-api-reference)
 *   [ Contributing](#-contributing)
-*   ⚖️ License](#%E2%99%94%EF%B8%8F-license)
+*   [ License](#%E2%99%94%EF%B8%8F-license)
 *   [ Important Links](#-important-links)
 *   [udos Footer](#-footer)
 
