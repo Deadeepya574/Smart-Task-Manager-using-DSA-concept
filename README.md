@@ -2,9 +2,9 @@
  
 ## Description
 
-This project implements a **Smart Task Manager** that leverages various Data Structures and Algorithms (DSA) for efficient task management. It features a modern web-based user interface (frontend) built with HTML, CSS, and JavaScript, powered by a Python Flask backend. The core task logic, including advanced operations like undo/redo and priority management, is handled by a high-performance C++ engine that communicates with the Flask application via standard input/output streams.
+A productivity dashboard built with Streamlit and C++, designed to demonstrate how Data Structures and Algorithms (DSA) can be used to build a practical task management application.
 
-This architecture demonstrates a robust inter-process communication pattern, combining the strengths of different programming languages to deliver a responsive and feature-rich task management experience. Users can add, update, delete, complete tasks, and organize them with priorities, deadlines, and categories, all while benefiting from the underlying DSA optimizations.
+The Streamlit interface communicates directly with a C++ engine through standard input/output. The C++ engine handles task operations and demonstrates data structures such as vectors, stacks, and priority queues.
 
 ## Table of Contents
 
@@ -34,7 +34,7 @@ This Smart Task Manager offers a comprehensive set of functionalities to help yo
 *   **Dashboard Statistics**: Get an overview of total, pending, completed, and high-priority tasks.
 *   **Task Filtering**: Filter tasks by status (Pending/Completed) or priority level directly from the UI.
 *   **Task Sorting**: Sort tasks by priority or deadline (console-only feature in the C++ component, though the web UI offers filtering).
-*   **Hybrid Architecture**: Python Flask backend orchestrating a high-performance C++ core engine for task logic.
+*   **Streamlit Dashboard**: Use a clean, interactive interface built with Python and Streamlit.
 
 ## Tech Stack
 
@@ -44,8 +44,8 @@ The project is built using a combination of powerful technologies:
     *   HTML5
     *   CSS3
     *   JavaScript
-*   **Backend (API Layer)**:
-    *   Python 3.x 
+*   **Interface and DashBoard**:
+    *   Streamlit
 *   **Backend (Core Logic)**:
     *   C++17 (or newer)
     *   Standard Template Library (STL) - `vector`, `stack`, `priority_queue`
@@ -57,15 +57,29 @@ The repository is organized into two main components: `backend` and `frontend`.
 ```
 Smart-Task-Manager-using-DSA-concept/
 ├── backend/
-│   ├── Task-Manager.cpp    # C++ TaskManager class implementation (console version)
-│   ├── main.cpp            # Duplicate of Task-Manager.cpp (console version)
-│   ├── TaskManager.h       # C++ TaskManager class declarations
-│   ├── engine.cpp          # C++ executable source for inter-process communication
-│   ├── engine.exe          # Compiled C++ engine (required by Flask backend)
-│   └── tasks.json          # (Empty, likely for future persistence or testing)
-├── index.html              # Redirects to frontend/index.html
-└── README.md               # Project documentation
+│   ├── Task-Manager.cpp
+│   ├── Task-Manager.exe
+│   ├── TaskManager.h
+│   ├── engine.cpp
+│   ├── engine.exe
+│   ├── main.cpp
+│   ├── task_engine.exe
+│   └── tasks.json
+├── streamlit_app.py
+├── requirements.txt
+├── .gitignore
+└── README.md
 ```
+### Main Files
+
+- `streamlit_app.py` — Implements the Streamlit dashboard and communicates with the C++ engine.
+- `backend/engine.cpp` — Implements the command-based interface for communication with the application.
+- `backend/TaskManager.h` — Defines the task structure and core task management operations.
+- `backend/Task-Manager.cpp` — Contains the console-based task manager implementation.
+- `backend/main.cpp` — Contains a console-oriented C++ program.
+- `requirements.txt` — Lists the Python dependencies.
+- `backend/tasks.json` — Present in the repository but not currently used by the C++ engine for persistent task storage.
+
 
 ## Installation
 
@@ -78,58 +92,85 @@ Ensure you have the following installed:
 *   **Python 3.x**: Download from [python.org](https://www.python.org/downloads/).
 *   **C++ Compiler**: A modern C++ compiler (e.g., g++ for Linux/macOS/WSL, MSVC for Windows) is required to build the C++ engine.
 
-### Clone the Repository
-
-First, clone the project repository to your local machine:
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Deadeepya574/Smart-Task-Manager-using-DSA-concept.git
 cd Smart-Task-Manager-using-DSA-concept
 ```
 
-### Build the C++ Engine
+### 2. Create a Virtual Environment
 
-Navigate to the `backend` directory and compile the C++ engine. The `engine.cpp` file uses a `TaskManager` class, whose definition is in `TaskManager.h` and its implementation is similar to `Task-Manager.cpp` or `main.cpp`.
+For Windows PowerShell:
 
-```bash
-cd backend
-# For Linux/macOS/WSL (using g++):
-g++ engine.cpp TaskManager.h -o engine.exe -std=c++17 -I. -Wall -Wextra 
-# If TaskManager.h does not contain all definitions, you might need to include Task-Manager.cpp or main.cpp:
-# g++ engine.cpp Task-Manager.cpp TaskManager.h -o engine.exe -std=c++17 -I. -Wall -Wextra
-
-# For Windows (using MinGW g++):
-g++ engine.cpp TaskManager.h -o engine.exe -std=c++17 -I. -Wall -Wextra
-# Or with Task-Manager.cpp:
-# g++ engine.cpp Task-Manager.cpp TaskManager.h -o engine.exe -std=c++17 -I. -Wall -Wextra
-
-# Ensure engine.exe is created in the 'backend' directory.
+```powershell
+py -m venv .venv
+.venv\Scripts\Activate.ps1
 ```
 
-**Note**: The `TaskManager.h` file appears to contain the necessary definitions for `engine.cpp` to compile. Ensure it's correctly included or that the necessary definitions are accessible.
-
-### Set up the Python Backend
-
-Still in the `backend` directory, install the required Python dependencies:
+### 3. Install Dependencies
 
 ```bash
-pip install Flask Flask-Cors
-cd .. # Go back to the root directory if you want to run from there, or stay in backend for direct execution
+python -m pip install --upgrade pip
+pip install -r requirements.txt
 ```
+
+Ensure that the `requirements.txt` file contains:
+
+```text
+streamlit
+```
+
+### 4. Verify the C++ Compiler
+
+```bash
+g++ --version
+```
+
+If the command is not recognized, install a compatible C++ compiler and configure its PATH.
+
+### 5. Run the Application
+
+From the project root directory, where `streamlit_app.py` is located, execute:
+
+```bash
+streamlit run streamlit_app.py
+```
+
+Streamlit will provide a local URL, usually:
+
+```text
+http://localhost:8501
+```
+
+Open this URL in your web browser to access the Smart Task Manager dashboard.
+
+The application automatically attempts to compile and launch the C++ engine when required.
+
+## Deployment on Streamlit Community Cloud
+
+1. Push your project files to GitHub.
+2. Visit [Streamlit Community Cloud](https://share.streamlit.io/).
+3. Create a new application and select your GitHub repository.
+4. Choose the `main` branch.
+5. Set the main file path to `streamlit_app.py`.
+6. Deploy the application.
+
+If the cloud environment requires a C++ compiler, create a root-level `packages.txt` file containing:
+
+```text
+g++
+```
+
+Keep Python dependencies in `requirements.txt` and system packages in `packages.txt`.
+
+Make sure `backend/engine.cpp` and `backend/TaskManager.h` are committed to GitHub so the application can compile the engine in its deployment environment.
+
+After deployment, pushing changes to the connected GitHub branch can trigger an application redeployment.
 
 ## Usage
 
-Once both the C++ engine and Python backend are set up, you can start the application:
-
-1.  **Run the Flask Backend**: From the project's root directory or `backend` directory:
-    ```bash
-    cd backend
-    python app.py
-    ```
-    The Flask server will start, typically on `http://127.0.0.1:5000`.
-
-2.  **Access the Web UI**: Open your web browser and navigate to `http://127.0.0.1:5000`.
-    *   The `index.html` at the project root will automatically redirect you to `frontend/index.html`.
+Once both the C++ engine and Streamlit are set up, you can start the application: 
 
 ### How to use the application:
 
@@ -142,20 +183,6 @@ Once both the C++ engine and Python backend are set up, you can start the applic
 *   **Search Tasks**: Type a keyword or task ID into the search bar to quickly filter and find specific tasks.
 
 --- 
-
-### Alternative UI with Streamlit
-
-This project also includes a Streamlit application (`streamlit_app.py`) that provides a different user interface for the task manager. To run it:
-
-1.  **Install Streamlit**: If you haven't already, install it using pip:
-    ```bash
-pip install streamlit
-```
-2.  **Run the Streamlit app**: From the project's root directory:
-    ```bash
-    streamlit run streamlit_app.py
-    ```
-    This will open the Streamlit application in your default web browser.
 
 
 ## Important Links
