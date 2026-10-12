@@ -12,12 +12,12 @@ The Streamlit interface communicates directly with a C++ engine through standard
 *   [Features](#features)
 *   [Tech Stack](#tech-stack)
 *   [Project Structure](#project-structure)
+*   [Main Files](#main-files)
 *   [Installation](#installation)
     *   [Prerequisites](#prerequisites)
-    *   [Clone the Repository](#clone-the-repository)
-    *   [Build the C++ Engine](#build-the-c-engine)
-    *   [Set up the Python Backend](#set-up-the-python-backend)
-*   [Usage](#usage) 
+*   [Deployment on Streamlit Community Cloud](#deployment-on-streamlit-community-cloud)
+*   [Usage](#usage)
+*   [How to use the application](#how-to-use-the-application)
 *   [Important Links](#important-links) 
 
 ## Features
@@ -70,7 +70,7 @@ Smart-Task-Manager-using-DSA-concept/
 ├── .gitignore
 └── README.md
 ```
-### Main Files
+## Main Files
 
 - `streamlit_app.py` — Implements the Streamlit dashboard and communicates with the C++ engine.
 - `backend/engine.cpp` — Implements the command-based interface for communication with the application.
@@ -92,14 +92,14 @@ Ensure you have the following installed:
 *   **Python 3.x**: Download from [python.org](https://www.python.org/downloads/).
 *   **C++ Compiler**: A modern C++ compiler (e.g., g++ for Linux/macOS/WSL, MSVC for Windows) is required to build the C++ engine.
 
-### 1. Clone the Repository
+#### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Deadeepya574/Smart-Task-Manager-using-DSA-concept.git
 cd Smart-Task-Manager-using-DSA-concept
 ```
 
-### 2. Create a Virtual Environment
+#### 2. Create a Virtual Environment
 
 For Windows PowerShell:
 
@@ -108,7 +108,7 @@ py -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
 
-### 3. Install Dependencies
+#### 3. Install Dependencies
 
 ```bash
 python -m pip install --upgrade pip
@@ -121,7 +121,7 @@ Ensure that the `requirements.txt` file contains:
 streamlit
 ```
 
-### 4. Verify the C++ Compiler
+#### 4. Verify the C++ Compiler
 
 ```bash
 g++ --version
@@ -129,7 +129,7 @@ g++ --version
 
 If the command is not recognized, install a compatible C++ compiler and configure its PATH.
 
-### 5. Run the Application
+#### 5. Run the Application
 
 From the project root directory, where `streamlit_app.py` is located, execute:
 
@@ -172,7 +172,7 @@ After deployment, pushing changes to the connected GitHub branch can trigger an 
 
 Once both the C++ engine and Streamlit are set up, you can start the application: 
 
-### How to use the application:
+## How to use the application
 
 *   **Add Tasks**: Use the task creation form on the dashboard to enter the task title, description, category, priority (High, Medium, Low), and deadline, then click **Add Task**.
 *   **View & Filter Tasks**: See all your added tasks listed in the main panel. Use the filter dropdowns to view tasks by status (All, Pending, Completed) or priority level.
@@ -188,6 +188,6 @@ Once both the C++ engine and Streamlit are set up, you can start the application
 ## Important Links
 
 *   **Repository**: [GitHub - Deadeepya574/Smart-Task-Manager-using-DSA-concept](https://github.com/Deadeepya574/Smart-Task-Manager-using-DSA-concept)
-*   **Project Link**: [Smart Task Manager]()
+*   **Project Link**: [Smart Task Manager](https://smart-task-manager-using-dsa-concept-mrnfz9poygrebbfribvycx.streamlit.app/)
  
  
