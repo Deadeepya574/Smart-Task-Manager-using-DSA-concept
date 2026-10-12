@@ -1,85 +1,73 @@
 # Smart Task Manager using DSA Concepts 
-
-![GitHub Stars](https://img.shields.io/github/stars/Deadeepya574/Smart-Task-Manager-using-DSA-concept?style=social)
-![GitHub Forks](https://img.shields.io/github/forks/Deadeepya574/Smart-Task-Manager-using-DSA-concept?style=social)
-![GitHub Language](https://img.shields.io/github/languages/top/Deadeepya574/Smart-Task-Manager-using-DSA-concept)
-
-##  Description
+ 
+## Description
 
 This project implements a **Smart Task Manager** that leverages various Data Structures and Algorithms (DSA) for efficient task management. It features a modern web-based user interface (frontend) built with HTML, CSS, and JavaScript, powered by a Python Flask backend. The core task logic, including advanced operations like undo/redo and priority management, is handled by a high-performance C++ engine that communicates with the Flask application via standard input/output streams.
 
 This architecture demonstrates a robust inter-process communication pattern, combining the strengths of different programming languages to deliver a responsive and feature-rich task management experience. Users can add, update, delete, complete tasks, and organize them with priorities, deadlines, and categories, all while benefiting from the underlying DSA optimizations.
 
-##  Table of Contents
+## Table of Contents
 
-*   [ Description](#description)
-*   [ Features](#features)
-*   [ Tech Stack](#tech-stack)
-*   [ Project Structure](#project-structure)
-*   [ Installation](#installation)
+*   [Description](#description)
+*   [Features](#features)
+*   [Tech Stack](#tech-stack)
+*   [Project Structure](#project-structure)
+*   [Installation](#installation)
     *   [Prerequisites](#prerequisites)
     *   [Clone the Repository](#clone-the-repository)
     *   [Build the C++ Engine](#build-the-c-engine)
     *   [Set up the Python Backend](#set-up-the-python-backend)
-*   [ Usage](#usage)
-*   [ API Reference](#api-reference) 
-*   [ Important Links](#important-links) 
+*   [Usage](#usage) 
+*   [Important Links](#important-links) 
 
-##  Features
+## Features
 
 This Smart Task Manager offers a comprehensive set of functionalities to help you stay organized:
 
-*    **Task CRUD Operations**: Easily Add, View, Update, and Delete tasks.
-*    **Priority Management**: Assign priorities (High, Medium, Low) to tasks.
-*    **Deadline Tracking**: Set and manage deadlines for your tasks.
-*    **Categorization**: Organize tasks into custom categories.
-*    **Undo/Redo Functionality**: Revert or reapply previous actions, powered by `std::stack` in the C++ engine.
-*    **Highest Priority Task View**: Quickly identify your most critical pending task using a `std::priority_queue`.
-*    **Task Search**: Find tasks by ID or Title.
-*    **Dashboard Statistics**: Get an overview of total, pending, completed, and high-priority tasks.
-*    **Task Filtering**: Filter tasks by status (Pending/Completed) or priority level directly from the UI.
-*    **Task Sorting**: Sort tasks by priority or deadline (console-only feature in the C++ component, though the web UI offers filtering).
-*    **Hybrid Architecture**: Python Flask backend orchestrating a high-performance C++ core engine for task logic.
+*   **Task CRUD Operations**: Easily Add, View, Update, and Delete tasks.
+*   **Priority Management**: Assign priorities (High, Medium, Low) to tasks.
+*   **Deadline Tracking**: Set and manage deadlines for your tasks.
+*   **Categorization**: Organize tasks into custom categories.
+*   **Undo/Redo Functionality**: Revert or reapply previous actions, powered by `std::stack` in the C++ engine.
+*   **Highest Priority Task View**: Quickly identify your most critical pending task using a `std::priority_queue`.
+*   **Task Search**: Find tasks by ID or Title.
+*   **Dashboard Statistics**: Get an overview of total, pending, completed, and high-priority tasks.
+*   **Task Filtering**: Filter tasks by status (Pending/Completed) or priority level directly from the UI.
+*   **Task Sorting**: Sort tasks by priority or deadline (console-only feature in the C++ component, though the web UI offers filtering).
+*   **Hybrid Architecture**: Python Flask backend orchestrating a high-performance C++ core engine for task logic.
 
-##  Tech Stack
+## Tech Stack
 
 The project is built using a combination of powerful technologies:
 
-*   **Frontend**: 
+*   **Frontend**:
     *   HTML5
     *   CSS3
     *   JavaScript
-*   **Backend (API Layer)**: 
-    *   Python 3.x
-    *   Flask
-    *   Flask-CORS
-*   **Backend (Core Logic)**: 
+*   **Backend (API Layer)**:
+    *   Python 3.x 
+*   **Backend (Core Logic)**:
     *   C++17 (or newer)
     *   Standard Template Library (STL) - `vector`, `stack`, `priority_queue`
 
-##  Project Structure
+## Project Structure
 
 The repository is organized into two main components: `backend` and `frontend`.
 
 ```
 Smart-Task-Manager-using-DSA-concept/
 ├── backend/
-│   ├── app.py              # Flask API server, communicates with C++ engine
 │   ├── Task-Manager.cpp    # C++ TaskManager class implementation (console version)
 │   ├── main.cpp            # Duplicate of Task-Manager.cpp (console version)
-│   ├── TaskManager.h       # C++ TaskManager class declarations (empty in analysis, inferred)
+│   ├── TaskManager.h       # C++ TaskManager class declarations
 │   ├── engine.cpp          # C++ executable source for inter-process communication
 │   ├── engine.exe          # Compiled C++ engine (required by Flask backend)
 │   └── tasks.json          # (Empty, likely for future persistence or testing)
-├── frontend/
-│   ├── index.html          # Main HTML for the web UI
-│   ├── script.js           # Frontend JavaScript logic and API calls
-│   └── style.css           # Frontend CSS styling
 ├── index.html              # Redirects to frontend/index.html
 └── README.md               # Project documentation
 ```
 
-##  Installation
+## Installation
 
 To get the Smart Task Manager up and running on your local machine, follow these steps:
 
@@ -101,24 +89,24 @@ cd Smart-Task-Manager-using-DSA-concept
 
 ### Build the C++ Engine
 
-Navigate to the `backend` directory and compile the C++ engine. The `engine.cpp` file uses a `TaskManager` class, whose full definition is expected from `TaskManager.h` and its implementation is similar to `Task-Manager.cpp` or `main.cpp`.
+Navigate to the `backend` directory and compile the C++ engine. The `engine.cpp` file uses a `TaskManager` class, whose definition is in `TaskManager.h` and its implementation is similar to `Task-Manager.cpp` or `main.cpp`.
 
 ```bash
 cd backend
 # For Linux/macOS/WSL (using g++):
-g++ engine.cpp -o engine.exe -std=c++17 -I. -Wall -Wextra # Assuming TaskManager.h is in current directory and TaskManager class is self-contained or linked.
-# If Task-Manager.cpp contains the TaskManager class implementation, you might need:
-g++ engine.cpp Task-Manager.cpp -o engine.exe -std=c++17 -I. -Wall -Wextra
+g++ engine.cpp TaskManager.h -o engine.exe -std=c++17 -I. -Wall -Wextra 
+# If TaskManager.h does not contain all definitions, you might need to include Task-Manager.cpp or main.cpp:
+# g++ engine.cpp Task-Manager.cpp TaskManager.h -o engine.exe -std=c++17 -I. -Wall -Wextra
 
 # For Windows (using MinGW g++):
-g++ engine.cpp -o engine.exe -std=c++17 -I. -Wall -Wextra
+g++ engine.cpp TaskManager.h -o engine.exe -std=c++17 -I. -Wall -Wextra
 # Or with Task-Manager.cpp:
-g++ engine.cpp Task-Manager.cpp -o engine.exe -std=c++17 -I. -Wall -Wextra
+# g++ engine.cpp Task-Manager.cpp TaskManager.h -o engine.exe -std=c++17 -I. -Wall -Wextra
 
 # Ensure engine.exe is created in the 'backend' directory.
 ```
 
-**Note**: The provided `TaskManager.h` is empty in the analysis. For successful compilation, `engine.cpp` implicitly relies on the `Task` struct and `TaskManager` class definition. It's assumed that the functionality from `Task-Manager.cpp` (or `main.cpp`) is either part of `TaskManager.h` or linked during compilation.
+**Note**: The `TaskManager.h` file appears to contain the necessary definitions for `engine.cpp` to compile. Ensure it's correctly included or that the necessary definitions are accessible.
 
 ### Set up the Python Backend
 
@@ -129,7 +117,7 @@ pip install Flask Flask-Cors
 cd .. # Go back to the root directory if you want to run from there, or stay in backend for direct execution
 ```
 
-##  Usage
+## Usage
 
 Once both the C++ engine and Python backend are set up, you can start the application:
 
@@ -153,20 +141,26 @@ Once both the C++ engine and Python backend are set up, you can start the applic
 *   **View Highest Priority Task**: Check the dedicated highlight card to instantly see the most critical pending task based on priority queue ordering.
 *   **Search Tasks**: Type a keyword or task ID into the search bar to quickly filter and find specific tasks.
 
----
+--- 
 
-##  API Reference
+### Alternative UI with Streamlit
 
-The Flask backend exposes several endpoints that communicate with the underlying C++ engine:
+This project also includes a Streamlit application (`streamlit_app.py`) that provides a different user interface for the task manager. To run it:
 
-*   `GET /`: Serves or redirects to the frontend interface.
-*   `GET /api/tasks`: Retrieves the list of all tasks.
-*   `POST /api/tasks`: Creates a new task.
-*   `PUT /api/tasks/<id>`: Updates an existing task's details or completion status.
-*   `DELETE /api/tasks/<id>`: Deletes a task by its ID.
-*   `POST /api/tasks/undo`: Reverts the last task operation.
-*   `POST /api/tasks/redo`: Reapplies the last undone task operation.
+1.  **Install Streamlit**: If you haven't already, install it using pip:
+    ```bash
+pip install streamlit
+```
+2.  **Run the Streamlit app**: From the project's root directory:
+    ```bash
+    streamlit run streamlit_app.py
+    ```
+    This will open the Streamlit application in your default web browser.
+
+
+## Important Links
+
+*   **Repository**: [GitHub - Deadeepya574/Smart-Task-Manager-using-DSA-concept](https://github.com/Deadeepya574/Smart-Task-Manager-using-DSA-concept)
+*   **Project Link**: [Smart Task Manager]()
  
-## 🔗 Important Links
-
-*   **Repository**: [GitHub - Deadeepya574/Smart-Task-Manager-using-DSA-concept](https://github.com/Deadeepya574/Smart-Task-Manager-using-DSA-concept) 
+ 
